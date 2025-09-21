@@ -5,121 +5,234 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haqqulbek | Portfolio</title>
   <style>
+    /* Reset & base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #0f172a;
       color: #f8fafc;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
+    a { text-decoration: none; transition: 0.3s; }
+
+    /* Header / Hero */
     header {
-      background: #1e293b;
-      padding: 1.5rem;
+      position: relative;
+      text-align: center;
+      color: #fff;
+    }
+    header .bg {
+      width: 100%;
+      height: 250px;
+      background: url("https://picsum.photos/1200/400?blur=2") center/cover no-repeat;
+      filter: brightness(0.6);
+    }
+    header .profile {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
     }
+    header .profile img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -10px); }
+    }
     header h1 {
-      margin: 0;
+      margin-top: 1rem;
       font-size: 2rem;
       color: #38bdf8;
     }
+    header p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    /* Navigation */
     nav {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
     }
     nav a {
       margin: 0 1rem;
       color: #f8fafc;
-      text-decoration: none;
       font-weight: bold;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: #38bdf8;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
     }
     nav a:hover {
       color: #38bdf8;
     }
+
+    /* Sections */
     section {
       max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(30,41,59,0.8);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      animation: fadeUp 1s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     h2 {
       color: #38bdf8;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
     }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skill {
+      padding: 0.5rem 1rem;
+      border: 1px solid #38bdf8;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    .skill:hover {
+      background: #38bdf8;
+      color: #0f172a;
+      transform: scale(1.05);
+    }
+
+    /* Projects */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
+      gap: 1.2rem;
     }
     .card {
       background: #1e293b;
       padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
     }
     .card h3 {
-      margin-top: 0;
       color: #facc15;
+      margin-bottom: 0.5rem;
     }
+
+    /* Contact */
+    .contact a {
+      color: #38bdf8;
+      font-weight: bold;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
     footer {
       background: #1e293b;
       text-align: center;
       padding: 1rem;
-      margin-top: 2rem;
       font-size: 0.9rem;
-    }
-    footer a {
-      color: #38bdf8;
-      text-decoration: none;
+      color: #cbd5e1;
+      border-top: 1px solid #334155;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Haqqulbek</h1>
-    <p>Backend Developer | Teacher | Aspiring Engineer</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="bg"></div>
+    <div class="profile">
+      <img src="https://picsum.photos/200" alt="Profile Picture" />
+      <h1>Haqqulbek</h1>
+      <p>Backend Developer | Teacher | Aspiring Engineer</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I’m a backend developer and computer basics teacher who loves coding, problem-solving, and
-      creating impactful projects. I’m currently preparing for IELTS and SAT while building a strong
-      foundation for my future in Computer Science and Engineering.
+      I am a backend developer and computer basics teacher with a strong passion for coding, 
+      problem-solving, and building impactful projects. I am exploring Computer Science and 
+      Engineering while preparing for academic challenges ahead.
     </p>
+  </section>
+
+  <section id="skills">
+    <h2>Technologies & Frameworks</h2>
+    <div class="skills">
+      <span class="skill">Python</span>
+      <span class="skill">Django</span>
+      <span class="skill">Aiogram</span>
+      <span class="skill">REST API</span>
+      <span class="skill">HTML</span>
+      <span class="skill">CSS</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">Git & GitHub</span>
+      <span class="skill">SQL</span>
+    </div>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       <div class="card">
-        <h3>Project 1</h3>
-        <p>A cool backend project demonstrating APIs and databases.</p>
+        <h3>API Service</h3>
+        <p>Developed a REST API with Django REST Framework to handle authentication and data management.</p>
       </div>
       <div class="card">
-        <h3>Project 2</h3>
-        <p>Teaching resources for students learning computer basics.</p>
+        <h3>Telegram Bot</h3>
+        <p>Created automation bots with Aiogram to simplify workflows and manage data efficiently.</p>
       </div>
       <div class="card">
-        <h3>Project 3</h3>
-        <p>Personal experiments with web development and GitHub Pages.</p>
+        <h3>Web Portfolio</h3>
+        <p>Designed and deployed personal portfolio websites using HTML, CSS, and GitHub Pages.</p>
       </div>
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="contact">
     <h2>Contact</h2>
     <p>
-      Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br />
-      GitHub: <a href="https://github.com/ProCoderUzb" target="_blank">github.com/ProCoderUzb</a><br />
-      LinkedIn: <a href="#" target="_blank">LinkedIn Profile</a>
+      📧 Email: <a href="mailto:procoder.uzb@gmail.com">procoder.uzb@gmail.com</a><br />
+      📢 Telegram Channel: <a href="https://t.me/personal_channel_of_hm" target="_blank">t.me/personal_channel_of_hm</a>
     </p>
   </section>
 
   <footer>
-    <p>© 2025 Haqqulbek | Built with ❤️ and GitHub Pages</p>
+    <p>© 2025 Haqqulbek. All rights reserved. | Portfolio built with ❤️ using HTML, CSS, and GitHub Pages.</p>
   </footer>
 </body>
 </html>
