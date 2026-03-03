@@ -3,156 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Backend Developer</title>
+    <title>Haqqulbek | Backend Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans leading-normal tracking-normal">
+<body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <nav class="fixed w-full z-10 top-0 bg-white shadow">
-        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-4 px-6">
-            <div class="font-bold text-2xl text-indigo-600">
-                Portfolio
-            </div>
-            <div class="block lg:hidden">
-                <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-gray-900">
-                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-                </button>
-            </div>
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center space-x-4">
-                    <li><a class="inline-block text-gray-600 no-underline hover:text-indigo-600 py-2 px-4" href="#about">About</a></li>
-                    <li><a class="inline-block text-gray-600 no-underline hover:text-indigo-600 py-2 px-4" href="#skills">Skills</a></li>
-                    <li><a class="inline-block text-gray-600 no-underline hover:text-indigo-600 py-2 px-4" href="#projects">Projects</a></li>
-                    <li><a class="inline-block text-gray-600 no-underline hover:text-indigo-600 py-2 px-4" href="#experience">Experience</a></li>
-                </ul>
-            </div>
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#0f172a] to-[#0f172a] -z-10"></div>
+        
+        <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)] mb-8">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Developer" class="w-full h-full object-cover" />
         </div>
-    </nav>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-white">
+            Backend <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Developer</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-8">
+            Building robust APIs, integrating complex systems, and architecting scalable solutions. Preparing for Fall 2026 university intake in AI and Software Engineering.
+        </p>
+        
+        <div class="flex space-x-6 text-2xl">
+            <a href="https://github.com/ProCoderUzb" target="_blank" class="text-slate-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/personal_channel_of_hm" target="_blank" class="text-slate-400 hover:text-blue-400 transition"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.instagram.com/mhaqqulbek/" target="_blank" class="text-slate-400 hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
 
-    <section id="about" class="pt-24 pb-12 bg-white">
-        <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row items-center">
-            <div class="w-full lg:w-1/2 flex flex-col justify-center items-start lg:pr-16 text-center lg:text-left">
-                <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-4 text-gray-900">
-                    Self-Taught Backend Developer & Tech Educator
-                </h1>
-                <p class="leading-normal text-lg mb-8 text-gray-600">
-                    Based in Uzbekistan, I specialize in building robust APIs, integrating complex systems, and creating practical software solutions. Passionate about AI in education and robotics, I focus on hands-on development to solve real-world problems.
-                </p>
-                <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">
-                    Get In Touch
-                </a>
-            </div>
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mb-8 lg:mb-0">
-                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-indigo-100 shadow-xl flex items-center justify-center bg-gray-100">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Software Developer" class="w-full h-full object-cover" />
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-700 pb-2">Experience</h2>
+        <div class="space-y-6">
+            <div class="glass-card p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-indigo-400">CEO, Co-Founder & Backend Developer</h3>
+                    <p class="text-slate-300">EducationPro Development Team</p>
                 </div>
+                <span class="text-sm text-slate-500 mt-2 md:mt-0 font-mono">Current</span>
             </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-12 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Technical Skills</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-full shadow-sm border border-indigo-100">Python</span>
-                <span class="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-full shadow-sm border border-indigo-100">Django REST Framework</span>
-                <span class="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-full shadow-sm border border-indigo-100">React</span>
-                <span class="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-full shadow-sm border border-indigo-100">HTML & CSS</span>
-                <span class="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-full shadow-sm border border-indigo-100">API Integration</span>
-                <span class="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-full shadow-sm border border-indigo-100">Telegram Bot Development</span>
+            <div class="glass-card p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-indigo-400">Computer Literacy Teacher</h3>
+                    <p class="text-slate-300">ProZone Learning Center</p>
+                </div>
+                <span class="text-sm text-slate-500 mt-2 md:mt-0 font-mono">Current</span>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-12 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Education Pro</h3>
-                    <p class="text-gray-600 mb-4">A comprehensive CRM built with Django REST Framework, featuring a financial dashboard and deployed successfully to a live server.</p>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">ProZone Admission System</h3>
-                    <p class="text-gray-600 mb-4">Developed the frontend React application and integrated a custom Telegram bot with the existing admission API.</p>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Marafon Uz</h3>
-                    <p class="text-gray-600 mb-4">A self-improvement platform and mobile app built to track challenges, utilizing AI assistance during development.</p>
-                </div>
-
-                <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">KettuTour Integration</h3>
-                    <p class="text-gray-600 mb-4">Successfully linked and integrated an existing payment system API to streamline transactions for the KettuTour platform.</p>
-                </div>
-
-                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Infinite Co Bot</h3>
-                    <p class="text-gray-600 mb-4">Built an automated registration bot for the Infinite Co Learning Center to handle new student intakes efficiently.</p>
-                </div>
-
-            </div>
+    <section class="py-10 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-700 pb-2">Technical Arsenal</h2>
+        <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">Python</span>
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">Django REST Framework</span>
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">SQL</span>
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">React JS</span>
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">HTML & CSS</span>
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">Telegram Bots</span>
+            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">API Integrations</span>
         </div>
     </section>
 
-    <section id="experience" class="py-12 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Experience & Education</h2>
-            <div class="max-w-3xl mx-auto space-y-8">
-                <div class="flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="md:w-1/3 mb-4 md:mb-0">
-                        <span class="text-indigo-600 font-bold">Current</span>
-                    </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-xl font-bold text-gray-900">Computer Literacy Teacher</h3>
-                        <p class="text-gray-600">ProZone Learning Center</p>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="md:w-1/3 mb-4 md:mb-0">
-                        <span class="text-indigo-600 font-bold">Fall 2026 Intake</span>
-                    </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-xl font-bold text-gray-900">University Applicant</h3>
-                        <p class="text-gray-600">Preparing for university studies with a focus on AI and Software Engineering.</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                    <div class="md:w-1/3 mb-4 md:mb-0">
-                        <span class="text-indigo-600 font-bold">Graduated</span>
-                    </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-xl font-bold text-gray-900">General Secondary School No. 35</h3>
-                    </div>
-                </div>
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-700 pb-2">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-white mb-2">EducationPro CRM</h3>
+                <p class="text-slate-400 text-sm">A comprehensive CRM solution built specifically for Learning Centers.</p>
             </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-white mb-2">ProZone Admission System</h3>
+                <p class="text-slate-400 text-sm">Full ecosystem: Built the API, the admission Telegram BOT, and the React JS admission website (with AI assistance & API integration).</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-white mb-2">KettuTour Integration</h3>
+                <p class="text-slate-400 text-sm">Successfully integrated an existing payment system API for seamless transactions.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-white mb-2">MarafonUz</h3>
+                <p class="text-slate-400 text-sm">A self-improvement platform and challenge tracker.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
+                <h3 class="text-xl font-bold text-white mb-2">InfiniteCoBot</h3>
+                <p class="text-slate-400 text-sm">An automated registration Telegram bot for handling new student intakes.</p>
+            </div>
+
         </div>
     </section>
 
-    <section id="contact" class="py-12 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Let's Connect</h2>
-            <p class="text-gray-600 mb-8 max-w-lg mx-auto">I am currently looking for new opportunities and university admissions. Feel free to check out my code!</p>
-            <div class="flex justify-center space-x-6">
-                <a href="https://github.com/ProCoderUzb" target="_blank" class="text-gray-400 hover:text-indigo-600 text-3xl transition"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-6 text-center">
-        <p>&copy; 2026 Portfolio. Built with HTML & Tailwind CSS.</p>
+    <footer class="text-center py-8 text-slate-500 border-t border-slate-800 mt-10">
+        <p>&copy; 2026 Haqqulbek. Built for the backend.</p>
     </footer>
 
-    <script>
-        document.getElementById('nav-toggle').onclick = function(){
-            document.getElementById("nav-content").classList.toggle("hidden");
-        }
-    </script>
 </body>
 </html>
