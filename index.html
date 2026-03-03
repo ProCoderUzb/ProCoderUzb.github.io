@@ -1,107 +1,473 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haqqulbek | Backend Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Xaqqulbek Muxiddinov — Backend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: #e2e8f0; }
-        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        :root {
+            --bg: #0a0d14;
+            --card: #111520;
+            --border: rgba(255,255,255,0.08);
+            --text: #b8c4d8;
+            --muted: #556070;
+            --accent: #4f8ef7;
+            --green: #34d399;
+            --white: #eef2ff;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 600px;
+            background: radial-gradient(circle, rgba(79, 142, 247, 0.08) 0%, rgba(10, 13, 20, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(10, 13, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+        }
+        .nav-inner {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+        .nav-logo em { font-style: normal; color: var(--accent); }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--white); }
+
+        /* HERO */
+        .hero {
+            padding: 7rem 0 6rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .hero-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 560px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 0.75rem 1.6rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .btn-primary { 
+            background: var(--accent); 
+            color: #fff; 
+            box-shadow: 0 4px 14px 0 rgba(79, 142, 247, 0.25);
+        }
+        .btn-primary:hover { 
+            background: #6fa0ff; 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(79, 142, 247, 0.4);
+        }
+        .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--white); background: rgba(79, 142, 247, 0.05); }
+
+        .socials { display: flex; gap: 0.6rem; margin-left: 0.5rem; }
+        .socials a {
+            width: 42px; height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--card);
+        }
+        .socials a:hover { 
+            border-color: var(--accent); 
+            color: var(--accent); 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 142, 247, 0.15);
+        }
+
+        /* SECTIONS */
+        section { padding: 5.5rem 0; border-bottom: 1px solid var(--border); }
+
+        .section-tag {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+        }
+
+        /* EXPERIENCE */
+        .exp-list { display: flex; flex-direction: column; gap: 1rem; }
+        .exp-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        .exp-card:hover { 
+            border-color: rgba(79,142,247,0.4); 
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px -8px rgba(0,0,0,0.5);
+        }
+        .exp-role {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        .exp-company { font-size: 0.85rem; color: var(--muted); }
+        .exp-badge {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--green);
+            background: rgba(52,211,153,0.08);
+            border: 1px solid rgba(52,211,153,0.18);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--green);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1; transform: scale(1);} 50%{opacity:0.5; transform: scale(0.8);} }
+
+        /* SKILLS */
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skill {
+            font-size: 0.85rem;
+            padding: 0.5rem 1.2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .skill:hover { 
+            border-color: var(--accent); 
+            color: var(--white); 
+            background: rgba(79, 142, 247, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* PROJECTS */
+        .projects-list { display: flex; flex-direction: column; gap: 1.2rem; }
+        .proj-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        .proj-card:hover { 
+            border-color: rgba(79,142,247,0.4); 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.6);
+        }
+        .proj-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            gap: 1rem; margin-bottom: 0.8rem; flex-wrap: wrap;
+        }
+        .proj-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .proj-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .proj-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(79,142,247,0.08);
+            border: 1px solid rgba(79,142,247,0.2);
+            border-radius: 6px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .proj-desc { font-size: 0.9rem; color: var(--text); line-height: 1.7; }
+
+        /* FOOTER */
+        footer { padding: 3rem 0; text-align: center; }
+        .footer-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        footer p { font-size: 0.85rem; color: var(--muted); }
+
+        /* FADE IN */
+        .fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .fade.in { opacity: 1; transform: none; }
+
+        @media (max-width: 580px) {
+            .nav-links { display: none; }
+            .exp-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .hero { padding: 5rem 0 4rem; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .btn { text-align: center; }
+            .socials { justify-content: center; margin-top: 1rem; margin-left: 0; }
+        }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
+<body>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-[#0f172a] to-[#0f172a] -z-10"></div>
-        
-        <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.5)] mb-8">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Developer" class="w-full h-full object-cover" />
-        </div>
-        
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-white">
-            Backend <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Developer</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-8">
-            Building robust APIs, integrating complex systems, and architecting scalable solutions. Preparing for Fall 2026 university intake in AI and Software Engineering.
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logo">Portfolio<em>.</em></div>
+        <ul class="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="hero fade">
+        <h2 class="hero-name">Xaqqulbek Muxiddinov</h2>
+        <h1>Backend<br><span>Developer.</span></h1>
+        <p class="hero-subtitle">
+            Building robust APIs, integrating complex systems, and architecting scalable solutions. Co-founder of EducationPro. Preparing for AI & Software Engineering university intake.
         </p>
-        
-        <div class="flex space-x-6 text-2xl">
-            <a href="https://github.com/ProCoderUzb" target="_blank" class="text-slate-400 hover:text-white transition"><i class="fab fa-github"></i></a>
-            <a href="https://t.me/personal_channel_of_hm" target="_blank" class="text-slate-400 hover:text-blue-400 transition"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.instagram.com/mhaqqulbek/" target="_blank" class="text-slate-400 hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
+        <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">See Projects</a>
+            <a href="#experience" class="btn btn-ghost">Experience</a>
+            <div class="socials">
+                <a href="https://github.com/ProCoderUzb" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://t.me/personal_channel_of_hm" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.instagram.com/mhaqqulbek/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-    </header>
+    </div>
+</div>
 
-    <section class="py-20 px-6 max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-700 pb-2">Experience</h2>
-        <div class="space-y-6">
-            <div class="glass-card p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center">
+<section id="experience">
+    <div class="container">
+        <span class="section-tag fade">Experience</span>
+        <h2 class="section-title fade">Where I've worked</h2>
+        <div class="exp-list">
+            <div class="exp-card fade">
                 <div>
-                    <h3 class="text-xl font-bold text-indigo-400">CEO, Co-Founder & Backend Developer</h3>
-                    <p class="text-slate-300">EducationPro Development Team</p>
+                    <div class="exp-role">CEO, Co-Founder & Backend Developer</div>
+                    <div class="exp-company">EducationPro Development Team</div>
                 </div>
-                <span class="text-sm text-slate-500 mt-2 md:mt-0 font-mono">Current</span>
+                <span class="exp-badge"><span class="status-dot"></span>Active</span>
             </div>
-            <div class="glass-card p-6 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div class="exp-card fade">
                 <div>
-                    <h3 class="text-xl font-bold text-indigo-400">Computer Literacy Teacher</h3>
-                    <p class="text-slate-300">ProZone Learning Center</p>
+                    <div class="exp-role">Computer Literacy Teacher</div>
+                    <div class="exp-company">ProZone Learning Center</div>
                 </div>
-                <span class="text-sm text-slate-500 mt-2 md:mt-0 font-mono">Current</span>
+                <span class="exp-badge"><span class="status-dot"></span>Active</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="py-10 px-6 max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-700 pb-2">Technical Arsenal</h2>
-        <div class="flex flex-wrap gap-3">
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">Python</span>
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">Django REST Framework</span>
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">SQL</span>
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">React JS</span>
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">HTML & CSS</span>
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">Telegram Bots</span>
-            <span class="px-4 py-2 bg-slate-800 text-cyan-300 rounded-md font-mono text-sm border border-slate-700 hover:border-cyan-500 transition">API Integrations</span>
+<section id="skills">
+    <div class="container">
+        <span class="section-tag fade">Technical Skills</span>
+        <h2 class="section-title fade">What I work with</h2>
+        <div class="skills-wrap fade">
+            <span class="skill">Python</span>
+            <span class="skill">Django REST Framework</span>
+            <span class="skill">SQL</span>
+            <span class="skill">React JS</span>
+            <span class="skill">HTML & CSS</span>
+            <span class="skill">Telegram Bots</span>
+            <span class="skill">API Integrations</span>
+            <span class="skill">System Architecture</span>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="py-20 px-6 max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold text-white mb-10 border-b border-slate-700 pb-2">Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
-                <h3 class="text-xl font-bold text-white mb-2">EducationPro CRM</h3>
-                <p class="text-slate-400 text-sm">A comprehensive CRM solution built specifically for Learning Centers.</p>
+<section id="projects">
+    <div class="container">
+        <span class="section-tag fade">Projects</span>
+        <h2 class="section-title fade">Things I've built</h2>
+        <div class="projects-list">
+
+            <div class="proj-card fade">
+                <div class="proj-header">
+                    <div class="proj-title">EducationPro CRM</div>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Python</span>
+                        <span class="proj-tag">Django</span>
+                        <span class="proj-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                <p class="proj-desc">A comprehensive CRM built for Learning Centers. Manages student records, attendance, payments, and reporting in one unified system.</p>
             </div>
 
-            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
-                <h3 class="text-xl font-bold text-white mb-2">ProZone Admission System</h3>
-                <p class="text-slate-400 text-sm">Full ecosystem: Built the API, the admission Telegram BOT, and the React JS admission website (with AI assistance & API integration).</p>
+            <div class="proj-card fade">
+                <div class="proj-header">
+                    <div class="proj-title">ProZone Admission System</div>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Django</span>
+                        <span class="proj-tag">React JS</span>
+                        <span class="proj-tag">Telegram Bot</span>
+                    </div>
+                </div>
+                <p class="proj-desc">Full ecosystem: a REST API backend, an admissions Telegram bot, and a React JS website — all integrated with AI assistance.</p>
             </div>
 
-            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
-                <h3 class="text-xl font-bold text-white mb-2">KettuTour Integration</h3>
-                <p class="text-slate-400 text-sm">Successfully integrated an existing payment system API for seamless transactions.</p>
+            <div class="proj-card fade">
+                <div class="proj-header">
+                    <div class="proj-title">KettuTour Payment Integration</div>
+                    <div class="proj-tags">
+                        <span class="proj-tag">API</span>
+                        <span class="proj-tag">Payments</span>
+                    </div>
+                </div>
+                <p class="proj-desc">Integrated an existing payment system API into a tour platform for seamless, reliable transaction handling.</p>
             </div>
 
-            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
-                <h3 class="text-xl font-bold text-white mb-2">MarafonUz</h3>
-                <p class="text-slate-400 text-sm">A self-improvement platform and challenge tracker.</p>
+            <div class="proj-card fade">
+                <div class="proj-header">
+                    <div class="proj-title">MarafonUz</div>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Django</span>
+                        <span class="proj-tag">Platform</span>
+                    </div>
+                </div>
+                <p class="proj-desc">A self-improvement platform and challenge tracker that encourages personal accountability and daily growth habits.</p>
             </div>
 
-            <div class="glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300">
-                <h3 class="text-xl font-bold text-white mb-2">InfiniteCoBot</h3>
-                <p class="text-slate-400 text-sm">An automated registration Telegram bot for handling new student intakes.</p>
+            <div class="proj-card fade">
+                <div class="proj-header">
+                    <div class="proj-title">InfiniteCoBot</div>
+                    <div class="proj-tags">
+                        <span class="proj-tag">Python</span>
+                        <span class="proj-tag">Telegram API</span>
+                    </div>
+                </div>
+                <p class="proj-desc">An automated Telegram bot that handles new student registrations, reducing manual workload and streamlining the onboarding flow.</p>
             </div>
 
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="text-center py-8 text-slate-500 border-t border-slate-800 mt-10">
-        <p>&copy; 2026 Haqqulbek. Built for the backend.</p>
-    </footer>
+<footer>
+    <div class="container">
+        <div class="footer-name">Xaqqulbek Muxiddinov</div>
+        <p>&copy; 2026 — Built for the backend.</p>
+    </div>
+</footer>
 
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
